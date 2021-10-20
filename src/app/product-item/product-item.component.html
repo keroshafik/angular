@@ -1,0 +1,14 @@
+    <img [src]="productItem.image" class="card-img-top" style="height: 100px; width: 100px;">
+    <div class="card-body">
+        <h3 class="card-title">category : {{productItem.category}}</h3>
+        <h5 class="card-title">{{productItem.title}}</h5>
+        <p class="card-text">{{productItem.description}}</p>
+        <p class="card-text">price : {{productItem.price | currency}}</p>
+        <p class="card-text" *ngIf="productItem.rating.count_in_stock > 0; then thenBlock else elseBlock"></p>
+        <ng-template #thenBlock><p  class="text-success"> in stock</p></ng-template>
+        <ng-template #elseBlock> <p  class="text-danger"> this item is out of stock</p> </ng-template>
+
+    </div>
+    <div class="card-footer">
+        <button type="button" class="btn btn-primary"  (click)="selectedItem()">add to cart</button>
+    </div>

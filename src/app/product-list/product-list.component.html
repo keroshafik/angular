@@ -1,0 +1,8 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let item of products" class="col">
+        <div class="card h-100" style="margin: 15px 15px 15px 15px;">
+
+        <app-product-item [productItem]="item" (sendDataItem)="recieveDataItem($event)"> </app-product-item>
+    </div>
+</div>
+</div>

@@ -7,6 +7,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductItemComponent } from './product-item/product-item.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { SimlpleFormComponent } from './simlple-form/simlple-form.component';
+import { AdvancedFormComponent } from './advanced-form/advanced-form.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +18,17 @@ import { ProductItemComponent } from './product-item/product-item.component';
     NavBarComponent,
     FooterComponent,
     ProductListComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    SimlpleFormComponent,
+    AdvancedFormComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

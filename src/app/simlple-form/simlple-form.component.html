@@ -1,0 +1,21 @@
+<form #simpleForm="ngForm" (ngSubmit)="testForm(simpleForm)">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" name="email" ngModel #email="ngModel" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
+      <div  *ngIf="email.touched && !email.valid || simpleForm.submitted && !email.valid " >
+          <small class="text-danger" *ngIf="email.errors?.required  ">this field is required</small>
+          <small class="text-danger" *ngIf="email.errors?.pattern " >fix your format</small>
+          <small class="text-danger" *ngif= "simpleForm.submitted && email.errors?.required && email.errors?.pattern ">fill the field</small>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" name="password" ngModel #password="ngModel" required>
+      <div *ngIf="password.touched && !password.valid || simpleForm.submitted && !password.valid" >
+        <small class="text-danger" *ngIf="password.errors?.required">this field is required</small>
+
+
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary"  [disabled]="!simpleForm.valid" > Submit </button>
+  </form>

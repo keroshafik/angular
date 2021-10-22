@@ -1,0 +1,61 @@
+<form [formGroup]="advancedForm" (ngSubmit)="sendData()">
+    <div class="mb-3">
+        <label for="name" class="form-label">name</label>
+        <input formControlName="name" name="name" type="text" class="form-control">
+        <div
+            *ngIf="formControls.name.touched && !formControls.name.valid || formControls.submitted && !formControls.name.valid">
+            <small class="text-danger" *ngIf="formControls.name.errors?.required  ">this field is required</small>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="userName" class="form-label">userName</label>
+        <input formControlName="userName" name="userName" type="text" class="form-control" pattern="^[\S]+$">
+        <div
+            *ngIf="formControls.userName.touched && !formControls.userName.valid || formControls.submitted && !formControls.userName.valid">
+            <small class="text-danger" *ngIf="formControls.userName.errors?.required  ">this field is required</small>
+            <small class="text-danger" *ngIf="formControls.userName.errors?.pattern  ">no spacses allowed</small>
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">email</label>
+        <input formControlName="email" name="email" type="email" class="form-control"
+            pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+    </div>
+
+    <div
+        *ngIf="formControls.email.touched && !formControls.email.valid ||formControls.submitted && !formControls.email.valid ">
+        <small class="text-danger" *ngIf="formControls.email.errors?.required  ">this field is required</small>
+        <small class="text-danger" *ngIf="formControls.email.errors?.pattern  ">fix your email format</small>
+    </div>
+
+
+
+    <div class="mb-3">
+        <label for="password" class="form-label">password</label>
+        <input formControlName="password" name="password" type="password" class="form-control" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$">
+        <div
+        *ngIf="formControls.password.touched && !formControls.password.valid ||formControls.submitted && !formControls.password.valid ">
+        <small class="text-danger" *ngIf="formControls.password.errors?.required  ">this field is required</small>
+        <small class="text-danger" *ngIf="formControls.password.errors?.minlength   ">min length is 8</small>
+        <small class="text-danger" *ngIf="formControls.password.errors?.pattern   ">fix your format</small>
+
+    </div>
+
+    </div>
+
+
+    <!-- <div class="mb-3">
+        <label for="confirmPassword" class="form-label">confirmPassword</label>
+        <input formControlName="confirmPassword" name="confirmPassword" type="password" class="form-control"
+           >
+    </div>
+
+    <div
+        *ngIf="formControls.email.touched && !formControls.email.valid ||formControls.submitted && !formControls.email.valid ">
+        <small class="text-danger" *ngIf="formControls.email.errors?.required  ">this field is required</small>
+        <small class="text-danger" *ngIf="formControls.email.errors?.pattern  ">fix your email format</small>
+    </div> -->
+
+    <button type="submit" class="btn btn-primary" [disabled]="!advancedForm.valid">Submit</button>
+</form>
